@@ -34,7 +34,7 @@ public class CreateDancingEventUseCase implements CreateDancingEvent {
 
             unpublishedDancingEvents.add(dancingEvent);
 
-            storeUnpublishedDancingEvents.forEventOrganizer(eventOrganizerId, unpublishedDancingEvents);
+            storeUnpublishedDancingEvents.ofEventOrganizer(eventOrganizerId, unpublishedDancingEvents);
 
             presentSuccess.present(toOutput(dancingEvent, eventOrganizerId));
         } catch (Exception e) {

@@ -19,7 +19,7 @@ public class TestUnpublishedDancingEventsRepository implements FetchUnpublishedD
     }
 
     @Override
-    public void forEventOrganizer(EventOrganizerId eventOrganizerId, UnpublishedDancingEvents unpublishedDancingEvents) {
+    public void ofEventOrganizer(EventOrganizerId eventOrganizerId, UnpublishedDancingEvents unpublishedDancingEvents) {
         this.unpublishedDancingEvents = unpublishedDancingEvents;
     }
 }
