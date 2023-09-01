@@ -1,5 +1,6 @@
 package org.creatingdancingevents;
 
+import org.creatingdancingevents.adapter.data_access.InMemoryDancingEventRepository;
 import org.creatingdancingevents.adapter.presentation.ConsoleController;
 import org.creatingdancingevents.application.use_case.CreateDancingEventUseCase;
 
