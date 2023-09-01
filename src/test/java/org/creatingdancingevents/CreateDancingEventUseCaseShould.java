@@ -2,7 +2,6 @@ package org.creatingdancingevents;
 
 import org.creatingdancingevents.application.ports.outbound.DancingEventRecord;
 import org.creatingdancingevents.application.ports.outbound.PresentCreatedDancingEvent;
-import org.creatingdancingevents.application.ports.outbound.PresentDancingEventCreationFailure;
 import org.creatingdancingevents.application.use_case.CreateDancingEventUseCase;
 import org.creatingdancingevents.domain.entity.DancingEvent;
 import org.creatingdancingevents.domain.value.DancingEventId;

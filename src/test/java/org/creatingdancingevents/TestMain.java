@@ -1,6 +1,5 @@
 package org.creatingdancingevents;
 
-import org.creatingdancingevents.application.ports.inbound.CreateDancingEvent;
 import org.creatingdancingevents.application.ports.outbound.GetNextDancingEventId;
 import org.creatingdancingevents.application.use_case.CreateDancingEventUseCase;
 import org.creatingdancingevents.domain.value.DancingEventId;
