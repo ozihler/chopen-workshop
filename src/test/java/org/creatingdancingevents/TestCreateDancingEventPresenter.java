@@ -1,6 +1,5 @@
 package org.creatingdancingevents;
 
-import jdk.jshell.Snippet;
 import org.creatingdancingevents.application.ports.outbound.DancingEventRecord;
 import org.creatingdancingevents.application.ports.outbound.PresentCreatedDancingEvent;
 

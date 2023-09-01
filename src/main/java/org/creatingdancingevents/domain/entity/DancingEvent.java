@@ -1,7 +1,7 @@
 package org.creatingdancingevents.domain.entity;
 
-import org.creatingdancingevents.domain.value.Description;
 import org.creatingdancingevents.domain.value.DancingEventId;
+import org.creatingdancingevents.domain.value.Description;
 import org.creatingdancingevents.domain.value.Title;
 
 import java.util.Objects;

@@ -10,17 +10,6 @@ import java.util.Scanner;
 
 public class TestMain {
 
-    private static final CreateDancingEvent useCase;
-
-    static {
-        InMemoryDancingEventRepository repo = new InMemoryDancingEventRepository();
-
-        useCase = new CreateDancingEventUseCase(
-                repo,
-                repo,
-                randomId());
-    }
-
     public static void main(String[] args) {
         executeCreateDancingEventUseCase();
 
