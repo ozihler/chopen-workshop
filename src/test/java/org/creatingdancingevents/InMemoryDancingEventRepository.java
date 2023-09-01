@@ -17,6 +17,7 @@ public class InMemoryDancingEventRepository
     @Override
     public void forEventOrganizer(EventOrganizerId eventOrganizerId, UnpublishedDancingEvents unpublishedDancingEvents) {
         this.unpublishedDancingEvents.put(eventOrganizerId, unpublishedDancingEvents);
+        System.out.println("Events in DB:"+ this.unpublishedDancingEvents);
     }
 
     @Override

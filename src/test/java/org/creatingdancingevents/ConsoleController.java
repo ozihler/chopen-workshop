@@ -3,6 +3,7 @@ package org.creatingdancingevents;
 import org.creatingdancingevents.application.ports.inbound.CreateDancingEvent;
 import org.creatingdancingevents.application.ports.outbound.DancingEventRecord;
 import org.creatingdancingevents.application.ports.outbound.PresentCreatedDancingEvent;
+import org.creatingdancingevents.application.ports.outbound.PresentDancingEventCreationFailure;
 
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -29,7 +30,7 @@ public class ConsoleController {
             out.println("Event description:");
             String description = scanner.nextLine();
 
-            out.println("Event organizer:");
+            out.println("Event organizer id:");
             String eventOrganizer = scanner.nextLine();
 
             DancingEventRecord input = new DancingEventRecord(null, title, description, eventOrganizer);
@@ -41,9 +42,10 @@ public class ConsoleController {
                 out.println("Description: " + dancingEvent.description());
                 out.println("Event organizer: " + dancingEvent.eventOrganizerId());
             };
+            PresentDancingEventCreationFailure presentFailure = e -> out.println("There was an error creating your event: " + e.getMessage());
 
+            useCase.execute(input, presentSuccess, presentFailure);
 
-            useCase.execute(input, presentSuccess, null);
             out.println("Would you like to create another event? (true/false)");
             continueOrFinish = scanner.nextLine().equals("true");
         } while (continueOrFinish);

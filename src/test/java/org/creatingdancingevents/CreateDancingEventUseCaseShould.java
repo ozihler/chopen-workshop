@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,7 +24,7 @@ public class CreateDancingEventUseCaseShould {
 
         TestUnpublishedDancingEventsRepository repo = new TestUnpublishedDancingEventsRepository();
         var useCase = new CreateDancingEventUseCase(
-                repo, repo, () -> new DancingEventId(testId));
+                repo, repo);
 
         useCase.execute(input, presenter, null);
 
@@ -43,8 +42,8 @@ public class CreateDancingEventUseCaseShould {
 
         var useCase = new CreateDancingEventUseCase(
                 dancingEventsRepository,
-                dancingEventsRepository,
-                () -> new DancingEventId(testId));
+                dancingEventsRepository
+        );
 
         useCase.execute(input, presenter, null);
 
@@ -65,8 +64,8 @@ public class CreateDancingEventUseCaseShould {
 
         var useCase = new CreateDancingEventUseCase(
                 dancingEventsRepository,
-                dancingEventsRepository,
-                () -> new DancingEventId(String.valueOf(new Random().nextInt(1000))));
+                dancingEventsRepository
+        );
 
         for (int i = 0; i < 5; i++) {
             useCase.execute(new DancingEventRecord(null, "Title", "Description", "eo-1"), Assertions::assertNotNull, null);
@@ -82,8 +81,8 @@ public class CreateDancingEventUseCaseShould {
 
         var useCase = new CreateDancingEventUseCase(
                 dancingEventsRepository,
-                dancingEventsRepository,
-                () -> new DancingEventId(String.valueOf(new Random().nextInt(1000))));
+                dancingEventsRepository
+        );
 
         for (int i = 0; i < 5; i++) {
             useCase.execute(new DancingEventRecord(null, "Title", "Description", "eo-1"), Assertions::assertNotNull, null);

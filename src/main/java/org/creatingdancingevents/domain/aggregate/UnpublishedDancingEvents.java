@@ -17,7 +17,6 @@ public class UnpublishedDancingEvents {
         if (unpublishedDancingEvents.size() >= 5) {
             throw new IllegalStateException("Maximum number of unpublished dancing events reached");
         }
-
         this.unpublishedDancingEvents.add(dancingEvent);
     }
 }
