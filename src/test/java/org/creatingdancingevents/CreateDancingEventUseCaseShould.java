@@ -1,5 +1,6 @@
 package org.creatingdancingevents;
 
+import org.creatingdancingevents.adapter.data_access.InMemoryDancingEventRepository;
 import org.creatingdancingevents.application.ports.outbound.DancingEventRecord;
 import org.creatingdancingevents.application.ports.outbound.PresentCreatedDancingEvent;
 import org.creatingdancingevents.application.use_case.CreateDancingEventUseCase;

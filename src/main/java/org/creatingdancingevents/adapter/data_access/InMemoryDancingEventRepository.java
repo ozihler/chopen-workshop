@@ -1,4 +1,4 @@
-package org.creatingdancingevents;
+package org.creatingdancingevents.adapter.data_access;
 
 import org.creatingdancingevents.application.ports.outbound.FetchUnpublishedDancingEvents;
 import org.creatingdancingevents.application.ports.outbound.StoreUnpublishedDancingEvents;

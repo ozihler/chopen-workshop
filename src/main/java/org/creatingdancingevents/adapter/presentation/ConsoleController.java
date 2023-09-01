@@ -1,4 +1,4 @@
-package org.creatingdancingevents;
+package org.creatingdancingevents.adapter.presentation;
 
 import org.creatingdancingevents.application.ports.inbound.CreateDancingEvent;
 import org.creatingdancingevents.application.ports.outbound.DancingEventRecord;
@@ -20,7 +20,7 @@ public class ConsoleController {
         useCase = createDancingEvent;
     }
 
-    void execute() {
+    public void execute() {
         boolean continueOrFinish;
         do {
             out.println("Please enter the details for your event:");
