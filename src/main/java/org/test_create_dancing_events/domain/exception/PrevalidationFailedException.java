@@ -9,7 +9,4 @@ public class PrevalidationFailedException extends Exception {
         this.reason = reason;
     }
 
-    public Reason getReason() {
-        return reason;
-    }
 }

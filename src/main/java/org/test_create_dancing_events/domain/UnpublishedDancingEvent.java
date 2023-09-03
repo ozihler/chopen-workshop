@@ -20,10 +20,6 @@ public class UnpublishedDancingEvent {
         return title;
     }
 
-    public EventDate getEventDate() {
-        return eventDate;
-    }
-
     @Override
     public String toString() {
         return "UnpublishedDancingEvent{" +

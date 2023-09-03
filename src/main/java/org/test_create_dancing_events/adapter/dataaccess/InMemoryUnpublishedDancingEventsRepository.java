@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class InMemoryUnpublishedDancingEventsRepository implements FetchUnpublishedDancingEvents, StoreUnpublishedDancingEvents {
-    private Map<EventOrganizer, UnpublishedDancingEvents> unpublishedDancingEvents;
+    private final Map<EventOrganizer, UnpublishedDancingEvents> unpublishedDancingEvents;
 
     public InMemoryUnpublishedDancingEventsRepository(Map<EventOrganizer, UnpublishedDancingEvents> unpublishedDancingEvents) {
         this.unpublishedDancingEvents = unpublishedDancingEvents;
