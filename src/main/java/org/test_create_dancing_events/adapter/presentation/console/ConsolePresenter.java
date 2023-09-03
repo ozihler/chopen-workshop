@@ -11,6 +11,14 @@ public class ConsolePresenter implements PresentDancingEventsCreation {
 
     @Override
     public void presentSuccess(UnpublishedDancingEvent unpublishedDancingEvent) {
-        System.out.println(unpublishedDancingEvent);
+        System.out.println("Event created successfully!");
+        System.out.println("Event details:");
+        System.out.println(format(unpublishedDancingEvent));
+    }
+
+    private static String format(UnpublishedDancingEvent unpublishedDancingEvent) {
+        return "Title: " + unpublishedDancingEvent.title().value() + "\n" +
+                "Description: " + unpublishedDancingEvent.description().value() + "\n" +
+                "Event date: " + unpublishedDancingEvent.eventDate().value() + "\n";
     }
 }

@@ -30,5 +30,6 @@ public class InMemoryUnpublishedDancingEventsRepository implements FetchUnpublis
     @Override
     public void store(EventOrganizer eventOrganizer, UnpublishedDancingEvents unpublishedDancingEvents) {
         this.unpublishedDancingEvents.put(eventOrganizer, unpublishedDancingEvents);
+        System.out.println("Stored unpublished dancing events for event organizer " + eventOrganizer.id() + ": " + this.unpublishedDancingEvents.get(eventOrganizer));
     }
 }

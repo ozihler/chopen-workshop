@@ -39,18 +39,17 @@ public class ConsoleController {
         System.out.println("Date (yyyy-mm-dd):");
         String date = scanner.nextLine();
         System.out.println("Event organizer id:");
-        int eventOrganizerId = scanner.nextInt();
+        String eventOrganizerId = scanner.nextLine();
 
         return new CreateDancingEventInput(
                 title,
                 description,
                 date,
-                eventOrganizerId
-        );
+                Integer.parseInt(eventOrganizerId));
     }
 
     private boolean shouldContinue() {
         System.out.println("Do you want to create another dancing event? (y/n)");
-        return scanner.next().equals("y");
+        return scanner.nextLine().equals("y");
     }
 }

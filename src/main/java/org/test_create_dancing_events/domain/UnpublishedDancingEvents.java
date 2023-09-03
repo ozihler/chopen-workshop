@@ -14,7 +14,7 @@ public class UnpublishedDancingEvents {
 
     public void add(UnpublishedDancingEvent unpublishedDancingEvent) {
         if (numberOfAllowedUnpublishedDancingEventsExceeded()) {
-            throw new NumberOfUnpublishedDancingEventsReachedMaxNumberException();
+            throw new NumberOfUnpublishedDancingEventsReachedMaxNumberException("Number of unpublished dancing events reached max number");
         }
 
         unpublishedDancingEvents.add(unpublishedDancingEvent);
@@ -22,5 +22,12 @@ public class UnpublishedDancingEvents {
 
     private boolean numberOfAllowedUnpublishedDancingEventsExceeded() {
         return unpublishedDancingEvents.size() > MAX_NUMBER_OF_UNPUBLISHED_DANCING_EVENTS;
+    }
+
+    @Override
+    public String toString() {
+        return "UnpublishedDancingEvents{" +
+                "unpublishedDancingEvents=" + unpublishedDancingEvents +
+                '}';
     }
 }
