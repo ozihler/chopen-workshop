@@ -1,6 +1,7 @@
 package org.creatingdancingevents.domain.aggregate;
 
 import org.creatingdancingevents.domain.entity.DancingEvent;
+import org.creatingdancingevents.domain.exception.NumberOfMaximumUnpublishedDancingEventsExceededException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public class UnpublishedDancingEvents {
 
     public void add(DancingEvent dancingEvent) {
         if (unpublishedDancingEvents.size() >= 5) {
-            throw new IllegalStateException("Maximum number of unpublished dancing events reached");
+            throw new NumberOfMaximumUnpublishedDancingEventsExceededException();
         }
         this.unpublishedDancingEvents.add(dancingEvent);
     }

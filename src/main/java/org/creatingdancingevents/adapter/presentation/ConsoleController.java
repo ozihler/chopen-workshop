@@ -1,7 +1,7 @@
 package org.creatingdancingevents.adapter.presentation;
 
 import org.creatingdancingevents.application.ports.inbound.CreateDancingEvent;
-import org.creatingdancingevents.application.ports.outbound.DancingEventRecord;
+import org.creatingdancingevents.application.ports.outbound.DancingEventInput;
 import org.creatingdancingevents.application.ports.outbound.PresentCreatedDancingEvent;
 import org.creatingdancingevents.application.ports.outbound.PresentDancingEventCreationFailure;
 
@@ -22,12 +22,12 @@ public class ConsoleController {
 
     public void execute() {
         do {
-            DancingEventRecord input = collectInputFromCommandLine();
+            DancingEventInput input = collectInputFromCommandLine();
             createDancingEvent.execute(input, successPresenter(), errorPresenter());
         } while (askUserToContinueOrFinish());
     }
 
-    private DancingEventRecord collectInputFromCommandLine() {
+    private DancingEventInput collectInputFromCommandLine() {
         out.println("Please enter the details for your event:");
         out.println("Event name:");
         String title = scanner.nextLine();
@@ -38,7 +38,7 @@ public class ConsoleController {
         out.println("Event organizer id:");
         String eventOrganizer = scanner.nextLine();
 
-        return new DancingEventRecord(null, title, description, eventOrganizer);
+        return new DancingEventInput(title, description, eventOrganizer);
     }
 
     private PresentCreatedDancingEvent successPresenter() {
@@ -52,11 +52,18 @@ public class ConsoleController {
     }
 
     private PresentDancingEventCreationFailure errorPresenter() {
-        return e -> out.println("There was an error creating your event: " + e.getMessage());
+        return e -> {
+            out.println("There was an error creating your event: " + e.getMessage());
+        };
     }
 
     private boolean askUserToContinueOrFinish() {
-        out.println("Would you like to create another event? (true/false)");
-        return scanner.nextLine().equals("true");
+        out.println("Would you like to create another event? (y/n)");
+        String answer = scanner.nextLine();
+        return answer.equalsIgnoreCase("true")
+                || answer.equalsIgnoreCase("y")
+                || answer.equalsIgnoreCase("ye")
+                || answer.equalsIgnoreCase("yeah")
+                || answer.equalsIgnoreCase("yes");
     }
 }

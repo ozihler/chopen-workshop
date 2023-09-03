@@ -24,7 +24,7 @@ public class CreateDancingEventUseCase implements CreateDancingEvent {
     }
 
     @Override
-    public void execute(DancingEventRecord input,
+    public void execute(DancingEventInput input,
                         PresentCreatedDancingEvent presentSuccess,
                         PresentDancingEventCreationFailure presentFailure) {
         try {
@@ -40,18 +40,17 @@ public class CreateDancingEventUseCase implements CreateDancingEvent {
         } catch (Exception e) {
             presentFailure.present(e);
         }
-
     }
 
-    private static DancingEventRecord toOutput(DancingEvent dancingEvent, EventOrganizerId eventOrganizerId) {
-        return new DancingEventRecord(
+    private static DancingEventOutput toOutput(DancingEvent dancingEvent, EventOrganizerId eventOrganizerId) {
+        return new DancingEventOutput(
                 dancingEvent.getDancingEventId().id(),
                 dancingEvent.getTitle().title(),
                 dancingEvent.getDescription().description(),
                 eventOrganizerId.id());
     }
 
-    private DancingEvent createFrom(DancingEventRecord input) {
+    private DancingEvent createFrom(DancingEventInput input) {
         return new DancingEvent(
                 new DancingEventId(String.valueOf(new Random().nextInt(100000))),
                 new Title(input.title()),

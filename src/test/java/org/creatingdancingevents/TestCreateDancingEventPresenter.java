@@ -1,17 +1,18 @@
 package org.creatingdancingevents;
 
-import org.creatingdancingevents.application.ports.outbound.DancingEventRecord;
+import org.creatingdancingevents.application.ports.outbound.DancingEventInput;
+import org.creatingdancingevents.application.ports.outbound.DancingEventOutput;
 import org.creatingdancingevents.application.ports.outbound.PresentCreatedDancingEvent;
 
 public class TestCreateDancingEventPresenter implements PresentCreatedDancingEvent {
-    private DancingEventRecord dancingEvent;
+    private DancingEventOutput dancingEvent;
 
     @Override
-    public void present(DancingEventRecord dancingEvent) {
+    public void present(DancingEventOutput dancingEvent) {
         this.dancingEvent = dancingEvent;
     }
 
-    public DancingEventRecord presentedDancingEvent() {
+    public DancingEventOutput presentedDancingEvent() {
         return dancingEvent;
     }
 }

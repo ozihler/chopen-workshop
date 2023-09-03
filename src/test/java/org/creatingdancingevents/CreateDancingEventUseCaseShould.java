@@ -1,7 +1,7 @@
 package org.creatingdancingevents;
 
 import org.creatingdancingevents.adapter.data_access.InMemoryDancingEventRepository;
-import org.creatingdancingevents.application.ports.outbound.DancingEventRecord;
+import org.creatingdancingevents.application.ports.outbound.DancingEventInput;
 import org.creatingdancingevents.application.ports.outbound.PresentCreatedDancingEvent;
 import org.creatingdancingevents.application.use_case.CreateDancingEventUseCase;
 import org.creatingdancingevents.domain.entity.DancingEvent;
@@ -20,7 +20,7 @@ public class CreateDancingEventUseCaseShould {
     public void create_a_dancing_event() {
         String testId = "de-1";
         String eventOrganizerIdS = "eo-1";
-        DancingEventRecord input = new DancingEventRecord(null, "Title", "Description", eventOrganizerIdS);
+        DancingEventInput input = new DancingEventInput("Title", "Description", eventOrganizerIdS);
         var presenter = new TestCreateDancingEventPresenter();
 
         TestUnpublishedDancingEventsRepository repo = new TestUnpublishedDancingEventsRepository();
@@ -35,7 +35,7 @@ public class CreateDancingEventUseCaseShould {
     @Test
     public void store_a_dancing_event_within_unpublished_dancing_events_of_a_user() {
         String testId = "de-1";
-        DancingEventRecord input = new DancingEventRecord(null, "Title", "Description", "eo-1");
+        DancingEventInput input = new DancingEventInput("Title", "Description", "eo-1");
 
         PresentCreatedDancingEvent presenter = dancingEvent -> {
         };
@@ -69,10 +69,10 @@ public class CreateDancingEventUseCaseShould {
         );
 
         for (int i = 0; i < 5; i++) {
-            useCase.execute(new DancingEventRecord(null, "Title", "Description", "eo-1"), Assertions::assertNotNull, null);
+            useCase.execute(new DancingEventInput("Title", "Description", "eo-1"), Assertions::assertNotNull, null);
         }
 
-        useCase.execute(new DancingEventRecord(null, "Title", "Description", "eo-1"), null, Assertions::assertNotNull);
+        useCase.execute(new DancingEventInput("Title", "Description", "eo-1"), null, Assertions::assertNotNull);
     }
 
     @Test
@@ -86,12 +86,20 @@ public class CreateDancingEventUseCaseShould {
         );
 
         for (int i = 0; i < 5; i++) {
-            useCase.execute(new DancingEventRecord(null, "Title", "Description", "eo-1"), Assertions::assertNotNull, null);
-            useCase.execute(new DancingEventRecord(null, "Title", "Description", "eo-2"), Assertions::assertNotNull, null);
+            useCase.execute(new DancingEventInput("Title", "Description", "eo-1"), Assertions::assertNotNull, null);
+            useCase.execute(new DancingEventInput("Title", "Description", "eo-2"), Assertions::assertNotNull, null);
         }
-        useCase.execute(new DancingEventRecord(null, "Title", "Description", "eo-1"), null, Assertions::assertNotNull);
+        useCase.execute(new DancingEventInput("Title", "Description", "eo-1"), null, Assertions::assertNotNull);
 
-        useCase.execute(new DancingEventRecord(null, "Title", "Description", "eo-2"), null, Assertions::assertNotNull);
+        useCase.execute(new DancingEventInput("Title", "Description", "eo-2"), null, Assertions::assertNotNull);
     }
 
+    @Test
+    void validate_event_organizer_id() {
+        var eventOrganizerId = "eo-1";
+
+        var useCase = new CreateDancingEventUseCase(null, null);
+
+        useCase.execute(new DancingEventInput(null, null, eventOrganizerId), null, null);
+    }
 }
