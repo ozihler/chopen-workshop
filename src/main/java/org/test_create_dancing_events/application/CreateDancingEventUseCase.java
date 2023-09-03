@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 import org.test_create_dancing_events.application.port.inbound.CreateDancingEvent;
 import org.test_create_dancing_events.application.port.inbound.CreateDancingEventInput;
 import org.test_create_dancing_events.application.port.outbound.FetchUnpublishedDancingEvents;
-import org.test_create_dancing_events.application.port.outbound.PresentDancingEventsCreation;
+import org.test_create_dancing_events.application.port.outbound.PresentDancingEventCreation;
 import org.test_create_dancing_events.application.port.outbound.PrevalidateUnpublishedDancingEvent;
 import org.test_create_dancing_events.application.port.outbound.StoreUnpublishedDancingEvents;
 import org.test_create_dancing_events.domain.*;
@@ -24,7 +24,7 @@ public class CreateDancingEventUseCase implements CreateDancingEvent {
     }
 
     @Override
-    public void execute(CreateDancingEventInput input, PresentDancingEventsCreation presenter) {
+    public void execute(CreateDancingEventInput input, PresentDancingEventCreation presenter) {
         try {
             EventOrganizer eventOrganizer = new EventOrganizer(input.eventOrganizerId());
 

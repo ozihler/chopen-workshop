@@ -1,9 +1,9 @@
 package org.test_create_dancing_events.adapter.presentation.console;
 
-import org.test_create_dancing_events.application.port.outbound.PresentDancingEventsCreation;
+import org.test_create_dancing_events.application.port.outbound.PresentDancingEventCreation;
 import org.test_create_dancing_events.domain.UnpublishedDancingEvent;
 
-public class ConsolePresenter implements PresentDancingEventsCreation {
+public class ConsolePresenter implements PresentDancingEventCreation {
     @Override
     public void presentFailure(Exception e) {
         System.err.println(e.getMessage());
