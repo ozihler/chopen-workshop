@@ -4,8 +4,8 @@ public class PrevalidationFailedException extends Exception {
 
     private final Reason reason;
 
-    public PrevalidationFailedException(Reason reason) {
-        super();
+    public PrevalidationFailedException(String message, Reason reason) {
+        super(message);
         this.reason = reason;
     }
 

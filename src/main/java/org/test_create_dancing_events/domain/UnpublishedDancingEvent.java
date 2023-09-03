@@ -23,4 +23,13 @@ public class UnpublishedDancingEvent {
     public EventDate getEventDate() {
         return eventDate;
     }
+
+    @Override
+    public String toString() {
+        return "UnpublishedDancingEvent{" +
+                "title=" + title +
+                ", description=" + description +
+                ", eventDate=" + eventDate +
+                '}';
+    }
 }

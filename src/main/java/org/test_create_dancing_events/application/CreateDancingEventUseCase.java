@@ -1,6 +1,7 @@
 package org.test_create_dancing_events.application;
 
-import org.test_create_dancing_events.application.port.CreateDancingEventInput;
+import org.test_create_dancing_events.application.port.inbound.CreateDancingEvent;
+import org.test_create_dancing_events.application.port.inbound.CreateDancingEventInput;
 import org.test_create_dancing_events.application.port.outbound.FetchUnpublishedDancingEvents;
 import org.test_create_dancing_events.application.port.outbound.PresentDancingEventsCreation;
 import org.test_create_dancing_events.application.port.outbound.PrevalidateUnpublishedDancingEvent;
@@ -23,8 +24,9 @@ public class CreateDancingEventUseCase implements CreateDancingEvent {
     @Override
     public void execute(CreateDancingEventInput input, PresentDancingEventsCreation presenter) {
         try {
+            EventOrganizer eventOrganizer = new EventOrganizer(input.eventOrganizerId());
 
-            UnpublishedDancingEvents unpublishedDancingEvents = fetchUnpublishedDancingEvents.fetchAllOfEventOrganizer(new EventOrganizer(input.eventOrganizerId()));
+            UnpublishedDancingEvents unpublishedDancingEvents = fetchUnpublishedDancingEvents.fetchAllOfEventOrganizer(eventOrganizer);
 
             UnpublishedDancingEvent unpublishedDancingEvent = createFrom(input);
 
@@ -32,7 +34,7 @@ public class CreateDancingEventUseCase implements CreateDancingEvent {
 
             unpublishedDancingEvents.add(unpublishedDancingEvent);
 
-            storeUnpublishedDancingEvents.store(unpublishedDancingEvents);
+            storeUnpublishedDancingEvents.store(eventOrganizer, unpublishedDancingEvents);
 
             presenter.presentSuccess(unpublishedDancingEvent);
         } catch (Exception e) {

@@ -1,4 +1,4 @@
 package org.test_create_dancing_events.domain;
 
-public record Title(String title) {
+public record Title(String value) {
 }
