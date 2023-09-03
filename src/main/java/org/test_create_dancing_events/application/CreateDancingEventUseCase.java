@@ -1,5 +1,6 @@
 package org.test_create_dancing_events.application;
 
+import org.springframework.stereotype.Component;
 import org.test_create_dancing_events.application.port.inbound.CreateDancingEvent;
 import org.test_create_dancing_events.application.port.inbound.CreateDancingEventInput;
 import org.test_create_dancing_events.application.port.outbound.FetchUnpublishedDancingEvents;
@@ -8,6 +9,7 @@ import org.test_create_dancing_events.application.port.outbound.PrevalidateUnpub
 import org.test_create_dancing_events.application.port.outbound.StoreUnpublishedDancingEvents;
 import org.test_create_dancing_events.domain.*;
 
+@Component
 public class CreateDancingEventUseCase implements CreateDancingEvent {
 
     private final FetchUnpublishedDancingEvents fetchUnpublishedDancingEvents;

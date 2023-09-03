@@ -1,4 +1,4 @@
-package org.test_create_dancing_events.adapter.presentation;
+package org.test_create_dancing_events.adapter.presentation.console;
 
 import org.test_create_dancing_events.application.port.outbound.PresentDancingEventsCreation;
 import org.test_create_dancing_events.domain.UnpublishedDancingEvent;

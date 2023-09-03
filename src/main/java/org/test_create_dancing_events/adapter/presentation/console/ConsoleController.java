@@ -1,4 +1,4 @@
-package org.test_create_dancing_events.adapter.presentation;
+package org.test_create_dancing_events.adapter.presentation.console;
 
 import org.test_create_dancing_events.application.port.inbound.CreateDancingEvent;
 import org.test_create_dancing_events.application.port.inbound.CreateDancingEventInput;
@@ -41,13 +41,12 @@ public class ConsoleController {
         System.out.println("Event organizer id:");
         int eventOrganizerId = scanner.nextInt();
 
-        CreateDancingEventInput input = new CreateDancingEventInput(
+        return new CreateDancingEventInput(
                 title,
                 description,
                 date,
                 eventOrganizerId
         );
-        return input;
     }
 
     private boolean shouldContinue() {

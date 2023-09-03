@@ -1,31 +1,5 @@
 package org.test_create_dancing_events.domain;
 
-public class UnpublishedDancingEvent {
+public record UnpublishedDancingEvent(Title title, Description description, EventDate eventDate) {
 
-    private final Title title;
-    private final Description description;
-    private final EventDate eventDate;
-
-    public UnpublishedDancingEvent(Title title, Description description, EventDate eventDate) {
-        this.title = title;
-        this.description = description;
-        this.eventDate = eventDate;
-    }
-
-    public Description getDescription() {
-        return description;
-    }
-
-    public Title getTitle() {
-        return title;
-    }
-
-    @Override
-    public String toString() {
-        return "UnpublishedDancingEvent{" +
-                "title=" + title +
-                ", description=" + description +
-                ", eventDate=" + eventDate +
-                '}';
-    }
 }
