@@ -17,30 +17,37 @@ public class ConsoleController {
     }
 
     public void execute() {
-
         do {
-            System.out.println("Please enter the following information to create a new dancing event:");
-            System.out.println("Title:");
-            String title = scanner.nextLine();
-            System.out.println("Description:");
-            String description = scanner.nextLine();
-            System.out.println("Date (yyyy-mm-dd):");
-            String date = scanner.nextLine();
-            System.out.println("Event organizer id:");
-            int eventOrganizerId = scanner.nextInt();
-
-            CreateDancingEventInput input = new CreateDancingEventInput(
-                    title,
-                    description,
-                    date,
-                    eventOrganizerId
-            );
-
+            CreateDancingEventInput input = askEventOrganizerForInput();
             createDancingEvent.execute(input, presenter);
         } while (shouldContinue());
 
+        cleanUps();
+    }
+
+    private void cleanUps() {
         System.out.println("Goodbye!");
         scanner.close();
+    }
+
+    private CreateDancingEventInput askEventOrganizerForInput() {
+        System.out.println("Please enter the following information to create a new dancing event:");
+        System.out.println("Title:");
+        String title = scanner.nextLine();
+        System.out.println("Description:");
+        String description = scanner.nextLine();
+        System.out.println("Date (yyyy-mm-dd):");
+        String date = scanner.nextLine();
+        System.out.println("Event organizer id:");
+        int eventOrganizerId = scanner.nextInt();
+
+        CreateDancingEventInput input = new CreateDancingEventInput(
+                title,
+                description,
+                date,
+                eventOrganizerId
+        );
+        return input;
     }
 
     private boolean shouldContinue() {
