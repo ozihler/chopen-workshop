@@ -26,11 +26,7 @@ public class CreateDancingEventUseCase implements CreateDancingEvent {
 
             UnpublishedDancingEvents unpublishedDancingEvents = fetchUnpublishedDancingEvents.fetchAllOfEventOrganizer(new EventOrganizer(input.eventOrganizerId()));
 
-            Description description = new Description(input.description());
-            Title title = new Title(input.title());
-            EventDate eventDate = new EventDate(input.eventDate());
-
-            UnpublishedDancingEvent unpublishedDancingEvent = new UnpublishedDancingEvent(title, description,eventDate);
+            UnpublishedDancingEvent unpublishedDancingEvent = createFrom(input);
 
             prevalidateUnpublishedDancingEvent.prevalidate(unpublishedDancingEvent);
 
@@ -42,6 +38,14 @@ public class CreateDancingEventUseCase implements CreateDancingEvent {
         } catch (Exception e) {
             presenter.presentFailure(e);
         }
+    }
+
+    private static UnpublishedDancingEvent createFrom(CreateDancingEventInput input) {
+        Description description = new Description(input.description());
+        Title title = new Title(input.title());
+        EventDate eventDate = new EventDate(input.eventDate());
+
+        return new UnpublishedDancingEvent(title, description,eventDate);
     }
 
 }
