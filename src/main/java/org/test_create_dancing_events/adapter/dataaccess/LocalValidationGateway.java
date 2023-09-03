@@ -15,10 +15,14 @@ public class LocalValidationGateway implements PrevalidateUnpublishedDancingEven
 
     @Override
     public void prevalidate(UnpublishedDancingEvent unpublishedDancingEvent) throws PrevalidationFailedException {
-        if (containsBadWord(unpublishedDancingEvent.title().value())
-                || containsBadWord(unpublishedDancingEvent.description().value())) {
+        if (containsAnyBadWord(unpublishedDancingEvent)) {
             throw new PrevalidationFailedException("Title contains bad word. Remove any of the following words: " + badWords, Reason.SWEARING);
         }
+    }
+
+    private boolean containsAnyBadWord(UnpublishedDancingEvent unpublishedDancingEvent) {
+        return containsBadWord(unpublishedDancingEvent.title().value())
+                || containsBadWord(unpublishedDancingEvent.description().value());
     }
 
     private boolean containsBadWord(String string) {
