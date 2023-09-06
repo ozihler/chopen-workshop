@@ -1,5 +1,6 @@
 package org.test_create_dancing_events.adapter.presentation.web;
 
+import org.springframework.http.ResponseEntity;
 import org.test_create_dancing_events.adapter.presentation.web.dto.DancingEventDto;
 import org.test_create_dancing_events.application.port.outbound.PresentDancingEventCreation;
 import org.test_create_dancing_events.domain.UnpublishedDancingEvent;
@@ -17,11 +18,12 @@ public class HttpPresenter implements PresentDancingEventCreation {
         this.unpublishedDancingEvent = unpublishedDancingEvent;
     }
 
-    DancingEventDto getBody() {
-        return new DancingEventDto(
+    ResponseEntity<DancingEventDto> getBody() {
+        DancingEventDto dancingEventDto = new DancingEventDto(
                 unpublishedDancingEvent.title().value(),
                 unpublishedDancingEvent.description().value(),
                 unpublishedDancingEvent.eventDate().value()
         );
+        return ResponseEntity.ok(dancingEventDto);
     }
 }

@@ -27,7 +27,7 @@ public class DancingEventRestController {
 
         useCase.execute(input, presenter);
 
-        return ResponseEntity.ok(presenter.getBody());
+        return presenter.getBody();
     }
 
 }
