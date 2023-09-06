@@ -1,4 +1,4 @@
-package create_dancing_event;
+package creating_dancing_events;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
