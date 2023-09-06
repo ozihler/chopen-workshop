@@ -13,6 +13,8 @@ public class ConsoleController {
         do {
             prompt("Please enter the required details to create a dancing event.");
 
+            // add use case here
+
         } while (askToContinueAddingDancingEvents());
 
         finishPrompt();
