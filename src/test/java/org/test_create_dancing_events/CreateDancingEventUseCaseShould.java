@@ -14,11 +14,11 @@ public class CreateDancingEventUseCaseShould {
     @Test
     void create_a_dancing_event() {
         var testRepo = new TestRepo();
-        var useCase = new CreateDancingEventUseCase(testRepo, testRepo, prevalidateDummy());
+        var createDancingEventUseCase = new CreateDancingEventUseCase(testRepo, testRepo, prevalidateDummy());
         var input = createInput();
         var testPresenter = new TestPresenter();
 
-        useCase.execute(input, testPresenter);
+        createDancingEventUseCase.execute(input, testPresenter);
 
         assertEquals(new UnpublishedDancingEvents(List.of(from(input))), testRepo.repo.get(new EventOrganizer(input.eventOrganizerId())));
         assertEquals(from(input), testPresenter.getUnpublishedDancingEvent());
