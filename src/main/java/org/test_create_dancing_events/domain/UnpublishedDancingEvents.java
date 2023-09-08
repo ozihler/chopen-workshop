@@ -22,7 +22,7 @@ public class UnpublishedDancingEvents {
     }
 
     private boolean numberOfAllowedUnpublishedDancingEventsExceeded() {
-        return unpublishedDancingEvents.size() > MAX_NUMBER_OF_UNPUBLISHED_DANCING_EVENTS;
+        return unpublishedDancingEvents.size() >= MAX_NUMBER_OF_UNPUBLISHED_DANCING_EVENTS;
     }
 
     @Override
@@ -43,5 +43,9 @@ public class UnpublishedDancingEvents {
     @Override
     public int hashCode() {
         return Objects.hash(unpublishedDancingEvents);
+    }
+
+    public List<UnpublishedDancingEvent> getAll() {
+        return unpublishedDancingEvents;
     }
 }

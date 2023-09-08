@@ -1,5 +1,6 @@
 package org.test_create_dancing_events.infrastructure;
 
+import org.test_create_dancing_events.adapter.dataaccess.FileSystemDancingEventRepository;
 import org.test_create_dancing_events.adapter.dataaccess.InMemoryUnpublishedDancingEventsRepository;
 import org.test_create_dancing_events.adapter.dataaccess.LocalValidationGateway;
 import org.test_create_dancing_events.adapter.presentation.console.ConsoleController;
@@ -12,7 +13,7 @@ import java.util.Scanner;
 public class ConsoleMain {
     public static void main(String[] args) {
         var prevalidator = new LocalValidationGateway();
-        var repo = new InMemoryUnpublishedDancingEventsRepository(new HashMap<>());
+        var repo = new FileSystemDancingEventRepository();
 
         var createDancingEvent = new CreateDancingEventUseCase(repo, repo, prevalidator);
 
